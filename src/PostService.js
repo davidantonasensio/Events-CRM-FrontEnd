@@ -17,36 +17,32 @@ class PostService{
         //console.log('Pass:', Pass);
         
         
-        return new Promise(
-            async(resolve, reject)=> 
-            {
-                try{
-                    //let lenghtYearsArray = Years.length;
-                    const res = await axios.get(
-                        url2, {
-                            params: {
-                                User: User,
-                                Pass: Pass
-                            }
-                        }
-                    )                
-                    
-                    
-                    const data = res.data;
-                    //console.log('DATA2 Messages: ', data)    
-                    //return data;       
-                    resolve(data)
-                    /*resolve(
-                        data.map(post =>({
-                            ...post
-                        })) 
-                    )*/  
-                                
-                } catch(err){
-                    reject(err);
+        async function gettingData() {
+
+            //let lenghtYearsArray = Years.length;
+            const res = await axios.get(
+                url2, {
+                    params: {
+                        User: User,
+                        Pass: Pass
+                    }
                 }
-            }
-        )        
+            )                
+            
+            
+            const data = res.data;
+            //console.log('DATA2 Messages: ', data)    
+            return data;       
+            //resolve(data)
+            /*resolve(
+                data.map(post =>({
+                    ...post
+                })) 
+            )*/  
+
+            } 
+            
+            return gettingData();
     }
 
     /** Get Post */
@@ -57,32 +53,25 @@ class PostService{
         
         //Years = ["2019"];
   
-        return new Promise(
-            async(resolve, reject)=> 
-            {
-                try{
-                    //let lenghtYearsArray = Years.length;
-                    const res = await axios.get(
-                        url, {
-                            params: {
-                                id: id,
-                                activ: activ,
-                                customer: customer,
-                                Years
-                            }
-                        }
-                    )
-                    
-                                
-                    const data = res.data;
-                    //console.log('DATA1: ', data)           
-                    resolve(data.map(post =>({...post})))                
-                }   
-                catch(err){
-                    reject(err);
+        async function gettingData() {
+            const res = await axios.get(
+                url, {
+                    params: {
+                        id: id,
+                        activ: activ,
+                        customer: customer,
+                        Years
+                    }
                 }
-            }
-        )
+            )            
+                        
+            const data = res.data;
+            //console.log('DATA1: ', data);           
+            return data.map(post =>({...post}));
+
+        }
+
+            return gettingData();
     }
 
     /** Get Post Messages */
@@ -95,29 +84,28 @@ class PostService{
         //console.log("url2", url2);
 
         
-        return new Promise(
-            async(resolve, reject)=> 
-            {
-                try{
-                    //let lenghtYearsArray = Years.length;
-                    const res = await axios.get(
-                        url2, {
-                            params: {
-                                ID: ID,
-                                howmany: howmany
-                            }
-                        }
-                    )                
-                                
-                    const data = res.data;
-                    //console.log('DATA2 Messages: ', data)           
-                    resolve(data.map(post =>({...post})))                
-                }   
-                catch(err){
-                    reject(err);
+        async function gettingData() {
+            //let lenghtYearsArray = Years.length;
+            const res = await axios.get(
+                url2, {
+                    params: {
+                        ID: ID,
+                        howmany: howmany
+                    }
                 }
-            }
-        )
+            )                
+                        
+            const data = res.data;
+            console.log('DATA2 Messages: ', data);
+            return data.map(post =>({...post}));        
+            //resolve(data.map(post =>({...post})))                
+
+        }
+
+            
+
+            return gettingData();
+        
         
     }
 

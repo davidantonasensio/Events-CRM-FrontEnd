@@ -82,11 +82,11 @@ export default {
   },
 
   methods: {
-    getWindowWidth(event) {
+    getWindowWidth() {
         this.windowWidth = document.documentElement.clientWidth;
       },
 
-      getWindowHeight(event) {
+      getWindowHeight() {
         this.windowHeight = document.documentElement.clientHeight;
       }
   },
