@@ -117,10 +117,11 @@ export default {
   },
   methods: {
     async createPost() {
-        let data = '';
-        //console.log('this.id1: ', this.id);
+        
+        console.log('this.id1: ', this.id);
         //console.log('this.id2: ', this.post2[0].idCustomer);
         let idtransfer = '';
+        let data = '';
 
 
         if(!this.theyaremessages){
